@@ -1,0 +1,159 @@
+Python 2.7.3 (default, Apr 10 2013, 05:46:21) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 0.12.1 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: results
+Out[1]: 
+{'add': array([  1.59287700e+06,   4.58000000e+02,   2.00000000e+00, ...,
+         7.36000000e+03,   2.27085000e+05,   1.27490000e+04]),
+ 'bins': array([  0.00000000e+00,   3.00000000e+00,   6.00000000e+00, ...,
+         5.02800000e+03,   5.03100000e+03,   5.03400000e+03]),
+ 'commits': array([5510,    2,    1, ...,  412, 2606,  536]),
+ 'delete': array([  9.60000000e+01,   0.00000000e+00,   2.00000000e+00, ...,
+         4.54200000e+03,   2.30676000e+05,   7.90400000e+03]),
+ 'dev': array([  5.,   1.,   2., ...,  26.,  64.,  39.]),
+ 'locs': array([  1.59297300e+06,   4.58000000e+02,   4.00000000e+00, ...,
+         1.19020000e+04,   4.57761000e+05,   2.06530000e+04])}
+
+In [2]: t = results['bins'][:-1]
+
+In [3]: a = results['locs']
+
+In [4]: import pylab as pl
+
+In [5]: pl.plot(t,a)
+Out[5]: [<matplotlib.lines.Line2D at 0x9823f8c>]
+
+In [6]: pl.show()
+^C
+---------------------------------------------------------------------------
+KeyboardInterrupt                         Traceback (most recent call last)
+/home/sb/dlab/mozilla/version-control/<ipython-input-6-884887d53e53> in <module>()
+----> 1 pl.show()
+
+/usr/lib/pymodules/python2.7/matplotlib/pyplot.pyc in show(*args, **kw)
+    137     """
+    138     global _show
+--> 139     _show(*args, **kw)
+    140 
+    141 
+
+/usr/lib/pymodules/python2.7/matplotlib/backend_bases.pyc in __call__(self, block)
+    107 
+    108         if not is_interactive():
+--> 109             self.mainloop()
+    110 
+    111     def mainloop(self):
+
+/usr/lib/pymodules/python2.7/matplotlib/backends/backend_tkagg.pyc in mainloop(self)
+     67 class Show(ShowBase):
+     68     def mainloop(self):
+---> 69         Tk.mainloop()
+     70 
+     71 show = Show()
+
+/usr/lib/python2.7/lib-tk/Tkinter.pyc in mainloop(n)
+    326 def mainloop(n=0):
+    327     """Run the main loop of Tcl."""
+--> 328     _default_root.tk.mainloop(n)
+    329 
+    330 getint = int
+
+KeyboardInterrupt: 
+
+In [7]: 
+
+In [7]: pl.plot(t,a)
+Out[7]: [<matplotlib.lines.Line2D at 0x9c49b0c>]
+
+In [8]: pl.show()
+
+In [9]: tc = 1385
+
+In [10]: pl.loglog(t[t>tc],a[t>tc])
+Out[10]: [<matplotlib.lines.Line2D at 0x9da122c>]
+
+In [11]: pl.show()\
+   ....: \
+   ....: )
+  File "<ipython-input-11-2640d25ded6b>", line 3
+    )
+    ^
+SyntaxError: invalid syntax
+
+
+In [12]: 
+
+In [12]: pl.show()
+
+In [13]: t>tc
+Out[13]: array([False, False, False, ...,  True,  True,  True], dtype=bool)
+
+In [14]: t[t>tc]
+Out[14]: array([ 1386.,  1389.,  1392., ...,  5025.,  5028.,  5031.])
+
+In [15]: a[t>tc]
+Out[15]: 
+array([  970662.,  2875829.,   140803., ...,    11902.,   457761.,
+          20653.])
+
+In [16]: pl.show()
+
+In [17]: pl.loglog(t[t>tc],a[t>tc])
+Out[17]: [<matplotlib.lines.Line2D at 0xa23240c>]
+
+In [18]: pl.show()
+
+In [19]: pl.plot(t,a)
+Out[19]: [<matplotlib.lines.Line2D at 0xa993dac>]
+
+In [20]: pl.show()
+
+In [21]: pl.loglog(t[t>tc],a[t>tc])
+Out[21]: [<matplotlib.lines.Line2D at 0xab8318c>]
+
+In [22]: pl.show()
+
+In [23]: c = (t>tc)*(t<1800)
+
+In [24]: pl.loglog(t[c],a[c])
+Out[24]: [<matplotlib.lines.Line2D at 0xb3fe3ec>]
+
+In [25]: pl.show()
+
+In [26]: import scipy
+---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+/home/sb/dlab/mozilla/version-control/<ipython-input-26-4dc45f4c0083> in <module>()
+----> 1 import scipy
+
+ImportError: No module named scipy
+
+In [27]: pl.loglog(t[c],a[c])
+Out[27]: [<matplotlib.lines.Line2D at 0xb3fef4c>]
+
+In [28]: pl.show()
+
+In [29]: x = np.log10(t[c])
+
+In [30]: y = np.log10(a[c])\
+   ....: 
+   ....: y = np.log10(a[c])
+  File "<ipython-input-30-8ff118881caf>", line 2
+    y = np.log10(a[c])
+    ^
+SyntaxError: invalid syntax
+
+
+In [31]: y = np.log10(a[c])
+
+In [32]: pl.plot(x,y,'.')
+Out[32]: [<matplotlib.lines.Line2D at 0xc31414c>]
+
+In [33]: pl.show()
+
